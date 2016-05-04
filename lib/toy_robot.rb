@@ -14,8 +14,10 @@ module ToyRobot
     end
 
     def place(position, facing_direction)
-      @position = @tabletop.place_robot(position)
-      @facing_direction = facing_direction
+      if @tabletop.can_place?(position)
+        @position = position
+        @facing_direction = facing_direction
+      end
     end
   end
 end

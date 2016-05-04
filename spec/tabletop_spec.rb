@@ -6,17 +6,15 @@ describe ToyRobot::Tabletop do
   
   subject { ToyRobot::Tabletop.new(rows, columns) }
 
-  describe '#place_robot' do
-    it "returns the robot's new position" do
+  describe '#can_place' do
+    it "returns true when robot can be placed at the specified position" do
       position = ToyRobot::Position.new(1, 1)
-      expect(subject.place_robot(position)).to eq position
+      expect(subject.can_place?(position)).to be_truthy 
     end
 
-    context 'when position is outside of the tabletop' do
-      it "keeps the robot in its previous position" do
-        position = ToyRobot::Position.new(6, 5)
-        expect(subject.place_robot(position)).to eq nil
-      end
+    it "returns false when robot cannot be placed at the specified position" do
+      position = ToyRobot::Position.new(6, 7)
+      expect(subject.can_place?(position)).to be_falsy
     end
   end
 
