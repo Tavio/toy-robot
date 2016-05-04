@@ -99,5 +99,26 @@ describe ToyRobot::ToyRobot do
       subject.move
       expect(subject.position).to eq ToyRobot::Position.new(4, 3)
     end
+
+    it 'moves east' do
+      subject.instance_variable_set(:@position, ToyRobot::Position.new(3, 3))
+      subject.instance_variable_set(:@facing_direction, :east)
+      subject.move
+      expect(subject.position).to eq ToyRobot::Position.new(3, 4)
+    end
+
+    it 'moves north' do
+      subject.instance_variable_set(:@position, ToyRobot::Position.new(3, 3))
+      subject.instance_variable_set(:@facing_direction, :north)
+      subject.move
+      expect(subject.position).to eq ToyRobot::Position.new(2, 3)
+    end
+
+    it 'moves west' do
+      subject.instance_variable_set(:@position, ToyRobot::Position.new(3, 3))
+      subject.instance_variable_set(:@facing_direction, :west)
+      subject.move
+      expect(subject.position).to eq ToyRobot::Position.new(3, 2)
+    end 
   end
 end

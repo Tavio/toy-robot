@@ -49,7 +49,13 @@ module ToyRobot
     def move
       case @facing_direction
       when :south
-        @position = Position.new(@position.row + 1, @position.column)
+        place(Position.new(@position.row + 1, @position.column), @facing_direction)
+      when :east
+        place(Position.new(@position.row, @position.column + 1), @facing_direction)
+      when :north
+        place(Position.new(@position.row - 1, @position.column), @facing_direction)
+      when :west
+        place(Position.new(@position.row, @position.column - 1), @facing_direction)
       end
     end
 
