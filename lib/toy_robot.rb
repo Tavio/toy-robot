@@ -46,5 +46,12 @@ module ToyRobot
       end
     end
 
+    def move
+      case @facing_direction
+      when :south
+        @position = Position.new(@position.row + 1, @position.column)
+      end
+    end
+
   end
 end

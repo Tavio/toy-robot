@@ -88,4 +88,16 @@ describe ToyRobot::ToyRobot do
       expect(subject.facing_direction).to eq :south
     end
   end
+
+  describe '#move' do
+
+    before { tabletop.stubs(:can_place?).returns true }
+
+    it 'moves south' do
+      subject.instance_variable_set(:@position, ToyRobot::Position.new(3, 3))
+      subject.instance_variable_set(:@facing_direction, :south)
+      subject.move
+      expect(subject.position).to eq ToyRobot::Position.new(4, 3)
+    end
+  end
 end
