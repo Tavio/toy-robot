@@ -1,6 +1,7 @@
 require "toy_robot/version"
 require 'tabletop.rb'
 require 'position.rb'
+require 'direction.rb'
 
 module ToyRobot
   class ToyRobot
@@ -21,42 +22,15 @@ module ToyRobot
     end
 
     def left
-      case @facing_direction
-      when :south
-        @facing_direction = :east
-      when :east
-        @facing_direction = :north
-      when :north
-        @facing_direction = :west
-      when :west
-        @facing_direction = :south
-      end
+      @facing_direction = @facing_direction.left
     end
 
     def right
-      case @facing_direction
-      when :south
-        @facing_direction = :west
-      when :west
-        @facing_direction = :north
-      when :north
-        @facing_direction = :east
-      when :east
-        @facing_direction = :south
-      end
+      @facing_direction = @facing_direction.right
     end
 
     def move
-      case @facing_direction
-      when :south
-        place(Position.new(@position.row + 1, @position.column), @facing_direction)
-      when :east
-        place(Position.new(@position.row, @position.column + 1), @facing_direction)
-      when :north
-        place(Position.new(@position.row - 1, @position.column), @facing_direction)
-      when :west
-        place(Position.new(@position.row, @position.column - 1), @facing_direction)
-      end
+      place(@facing_direction.move(@position), @facing_direction)
     end
 
   end

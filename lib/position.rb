@@ -7,6 +7,10 @@ module ToyRobot
       @column = column
     end
 
+    def +(another_position)
+      Position.new(row + another_position.row, column + another_position.column)
+    end
+
     def ==(another_position)
       @row == another_position.row && @column == another_position.column
     end
