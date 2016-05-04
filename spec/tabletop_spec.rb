@@ -12,9 +12,11 @@ describe ToyRobot::Tabletop do
       expect(subject.place_robot(position)).to eq position
     end
 
-    it "prevents the robot from being placed outside of the tabletop" do
-      position = ToyRobot::Position.new(6, 5)
-      expect(subject.place_robot(position)).to eq nil
+    context 'when position is outside of the tabletop' do
+      it "keeps the robot in its previous position" do
+        position = ToyRobot::Position.new(6, 5)
+        expect(subject.place_robot(position)).to eq nil
+      end
     end
   end
 
