@@ -6,17 +6,15 @@ describe ToyRobot::Tabletop do
   
   subject { ToyRobot::Tabletop.new(rows, columns) }
 
-  describe '#robot_position' do
-    context 'when the robot has not yet been placed' do
-      it 'returns nil' do
-        expect(subject.robot_position).to be_nil 
-      end
+  describe '#place_robot' do
+    it "returns the robot's new position" do
+      position = ToyRobot::Position.new(1, 1)
+      expect(subject.place_robot(position)).to eq position
     end
 
-    it "returns the robot's current position on the tabletop" do
-      position = ToyRobot::Position.new(1,1)
-      subject.place_robot(position)
-      expect(subject.robot_position).to eq(position) 
+    it "prevents the robot from being placed outside of the tabletop" do
+      position = ToyRobot::Position.new(6, 5)
+      expect(subject.place_robot(position)).to eq nil
     end
   end
 
