@@ -43,5 +43,23 @@ describe ToyRobot::ToyRobot do
       subject.left
       expect(subject.facing_direction).to eq :east
     end
+
+    it "changes the robot's facing direction from east to north" do
+      subject.instance_variable_set(:@facing_direction, :east)
+      subject.left
+      expect(subject.facing_direction).to eq :north
+    end
+
+    it "changes the robot's facing direction from north to west" do
+      subject.instance_variable_set(:@facing_direction, :north)
+      subject.left
+      expect(subject.facing_direction).to eq :west
+    end
+
+    it "changes the robot's facing direction from west to south" do
+      subject.instance_variable_set(:@facing_direction, :west)
+      subject.left
+      expect(subject.facing_direction).to eq :south
+    end
   end
 end

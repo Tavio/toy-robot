@@ -24,6 +24,12 @@ module ToyRobot
       case @facing_direction
       when :south
         @facing_direction = :east
+      when :east
+        @facing_direction = :north
+      when :north
+        @facing_direction = :west
+      when :west
+        @facing_direction = :south
       end
     end
   end
